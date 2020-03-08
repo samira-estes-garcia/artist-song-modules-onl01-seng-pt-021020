@@ -1,6 +1,11 @@
+require_relative '../lib/concerns/memorable'
+
 require 'pry'
 
-class Song
+class Song  
+  
+  extend Memorable
+  
   attr_accessor :name
   attr_reader :artist
 
@@ -14,16 +19,8 @@ class Song
     @@songs.detect{|a| a.name == name}
   end
 
-  def self.all
+ def self.all
     @@songs
-  end
-
-  def self.reset_all
-    self.all.clear
-  end
-
-  def self.count
-    self.all.count
   end
 
   def artist=(artist)
